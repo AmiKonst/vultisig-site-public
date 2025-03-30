@@ -1,4 +1,4 @@
-import { u as useBackedApi, a as useTrustApi, b as useKolsApi, c as useInvestorsApi, d as useAirdropApi, _ as _export_sfc, e as useI18n, r as resolveComponent, o as openBlock, f as createElementBlock, g as createBaseVNode, h as unref, i as createVNode, w as withCtx, B as Button, j as reactive, k as onMounted, t as toDisplayString, F as Fragment, l as renderList, m as computed, n as normalizeClass, s as stores, p as watch, q as createTextVNode, v as createBlock, x as createCommentVNode, y as numberWithSpaces, z as createStaticVNode, A as delay, C as resolveDirective, D as _imports_0$2, E as withDirectives, G as storeToRefs } from './index.a98ec9d6.js';
+import { u as useBackedApi, a as useTrustApi, b as useKolsApi, c as useInvestorsApi, d as useAirdropApi, _ as _export_sfc, e as useI18n, r as resolveComponent, o as openBlock, f as createElementBlock, g as createBaseVNode, h as unref, i as createVNode, w as withCtx, B as Button, j as reactive, k as onMounted, t as toDisplayString, F as Fragment, l as renderList, m as computed, n as normalizeClass, s as stores, p as watch, q as createTextVNode, v as createBlock, x as createCommentVNode, y as numberWithSpaces, z as createStaticVNode, A as delay, C as resolveDirective, D as _imports_0$2, E as withDirectives, G as storeToRefs } from './index.493032f5.js';
 
 const api = {
     backed: () => useBackedApi(),
@@ -55,7 +55,7 @@ return (_ctx, _cache) => {
 };
 const Welcome = /*#__PURE__*/_export_sfc(_sfc_main$e, [['__scopeId',"data-v-f32f37de"],['__file',"D:/job/vultisig/vultisig-landing/src/pages/Home/components/Welcome.vue"]]);
 
-const _imports_0$1 = "/img/vult-screens.jpg";
+const _imports_0$1 = "/vultisig-site-public/img/vult-screens.jpg";
 
 const Trust_vue_vue_type_style_index_0_scoped_de07250f_lang = '';
 
@@ -152,7 +152,7 @@ return (_ctx, _cache) => {
 };
 const Slogans = /*#__PURE__*/_export_sfc(_sfc_main$c, [['__scopeId',"data-v-a078e414"],['__file',"D:/job/vultisig/vultisig-landing/src/pages/Home/components/Slogans.vue"]]);
 
-const _imports_0 = "/img/features.png";
+const _imports_0 = "/vultisig-site-public/img/features.png";
 
 const Features_vue_vue_type_style_index_0_scoped_ec08b062_lang = '';
 

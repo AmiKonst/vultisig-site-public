@@ -30166,12 +30166,12 @@ const useOthersStore = defineStore('others', {
         },
         themePath: (state) => {
             if (state.theme === 'dark') {
-                return new URL("/assets/variables.258441df.css?v=3", self.location).href;
+                return new URL("/vultisig-site-public/assets/variables.258441df.css?v=3", self.location).href;
             }
         },
         svgSpritePath: (state) => {
             if (state.theme === 'dark') {
-                return new URL("/assets/svg-sprite.1c499bfe.svg", self.location).href;
+                return new URL("/vultisig-site-public/assets/svg-sprite.1c499bfe.svg", self.location).href;
             }
         },
         animateSvgSpritePath: (state) => {
@@ -42429,7 +42429,7 @@ const isMobile = () => {
     return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
 };
 
-const scriptRel = 'modulepreload';const assetsURL = function(dep) { return "/"+dep };const seen = {};const __vitePreload = function preload(baseModule, deps, importerUrl) {
+const scriptRel = 'modulepreload';const assetsURL = function(dep) { return "/vultisig-site-public/"+dep };const seen = {};const __vitePreload = function preload(baseModule, deps, importerUrl) {
     // @ts-ignore
     if (!true || !deps || deps.length === 0) {
         return baseModule();
@@ -46222,13 +46222,13 @@ const routes = [
     {
         path: '/',
         name: 'home',
-        component: () => __vitePreload(() => import('./Home.792679e3.js'),true?["assets/Home.792679e3.js","assets/Home.e70482b0.css"]:void 0),
+        component: () => __vitePreload(() => import('./Home.0db74580.js'),true?["assets/Home.0db74580.js","assets/Home.e70482b0.css"]:void 0),
         abort: []
     },
     {
         path: '/error',
         name: 'error',
-        component: () => __vitePreload(() => import('./Error.9f104b51.js'),true?["assets/Error.9f104b51.js","assets/Error.b7bdf131.css"]:void 0),
+        component: () => __vitePreload(() => import('./Error.d3ec2304.js'),true?["assets/Error.d3ec2304.js","assets/Error.b7bdf131.css"]:void 0),
         abort: []
     },
     {
@@ -54199,7 +54199,7 @@ const Vue3TouchEvents = {
 
 function _typeof(e){return _typeof="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(e){return typeof e}:function(e){return e&&"function"==typeof Symbol&&e.constructor===Symbol&&e!==Symbol.prototype?"symbol":typeof e},_typeof(e)}function plugin(e,n){if(!e.vueAxiosInstalled){var o=isAxiosLike(n)?migrateToMultipleInstances(n):n;if(isValidConfig(o)){var t=getVueVersion(e);if(t){var i=t<3?registerOnVue2:registerOnVue3;Object.keys(o).forEach((function(n){i(e,n,o[n]);})),e.vueAxiosInstalled=!0;}else console.error("[vue-axios] unknown Vue version");}else console.error("[vue-axios] configuration is invalid, expected options are either <axios_instance> or { <registration_key>: <axios_instance> }");}}function registerOnVue2(e,n,o){Object.defineProperty(e.prototype,n,{get:function(){return o}}),e[n]=o;}function registerOnVue3(e,n,o){e.config.globalProperties[n]=o,e[n]=o;}function isAxiosLike(e){return e&&"function"==typeof e.get&&"function"==typeof e.post}function migrateToMultipleInstances(e){return {axios:e,$http:e}}function isValidConfig(e){return "object"===_typeof(e)&&Object.keys(e).every((function(n){return isAxiosLike(e[n])}))}function getVueVersion(e){return e&&e.version&&Number(e.version.split(".")[0])}"object"==("undefined"==typeof exports?"undefined":_typeof(exports))?module.exports=plugin:"function"==typeof define&&define.amd?define([],(function(){return plugin})):window.Vue&&window.axios&&window.Vue.use&&Vue.use(plugin,window.axios);
 
-const _imports_0 = "/img/logo.svg";
+const _imports_0 = "/vultisig-site-public/img/logo.svg";
 
 const Loader_vue_vue_type_style_index_0_scoped_cc971575_lang = '';
 
@@ -55430,7 +55430,7 @@ const browserExt = {
   },
   test: () => true,
   load: async () => {
-    await __vitePreload(() => import('./browserAll.e431f666.js'),true?["assets/browserAll.e431f666.js","assets/init.589b2be6.js","assets/colorToUniform.08ac551a.js"]:void 0);
+    await __vitePreload(() => import('./browserAll.839097be.js'),true?["assets/browserAll.839097be.js","assets/init.f5f82839.js","assets/colorToUniform.08ac551a.js"]:void 0);
   }
 };
 
@@ -55442,7 +55442,7 @@ const webworkerExt = {
   },
   test: () => typeof self !== "undefined" && self.WorkerGlobalScope !== void 0,
   load: async () => {
-    await __vitePreload(() => import('./webworkerAll.69b75f46.js'),true?["assets/webworkerAll.69b75f46.js","assets/init.589b2be6.js","assets/colorToUniform.08ac551a.js"]:void 0);
+    await __vitePreload(() => import('./webworkerAll.a01dbab9.js'),true?["assets/webworkerAll.a01dbab9.js","assets/init.f5f82839.js","assets/colorToUniform.08ac551a.js"]:void 0);
   }
 };
 
@@ -65902,14 +65902,14 @@ async function autoDetectRenderer(options) {
   for (let i = 0; i < preferredOrder.length; i++) {
     const rendererType = preferredOrder[i];
     if (rendererType === "webgpu" && await isWebGPUSupported()) {
-      const { WebGPURenderer } = await __vitePreload(() => import('./WebGPURenderer.c1aab9d6.js'),true?["assets/WebGPURenderer.c1aab9d6.js","assets/colorToUniform.08ac551a.js","assets/SharedSystems.ae527850.js"]:void 0);
+      const { WebGPURenderer } = await __vitePreload(() => import('./WebGPURenderer.ce2d1020.js'),true?["assets/WebGPURenderer.ce2d1020.js","assets/colorToUniform.08ac551a.js","assets/SharedSystems.e8ab0de2.js"]:void 0);
       RendererClass = WebGPURenderer;
       finalOptions = { ...options, ...options.webgpu };
       break;
     } else if (rendererType === "webgl" && isWebGLSupported(
       options.failIfMajorPerformanceCaveat ?? AbstractRenderer.defaultOptions.failIfMajorPerformanceCaveat
     )) {
-      const { WebGLRenderer } = await __vitePreload(() => import('./WebGLRenderer.b7bd907c.js'),true?["assets/WebGLRenderer.b7bd907c.js","assets/colorToUniform.08ac551a.js","assets/SharedSystems.ae527850.js"]:void 0);
+      const { WebGLRenderer } = await __vitePreload(() => import('./WebGLRenderer.6cf69cc9.js'),true?["assets/WebGLRenderer.6cf69cc9.js","assets/colorToUniform.08ac551a.js","assets/SharedSystems.e8ab0de2.js"]:void 0);
       RendererClass = WebGLRenderer;
       finalOptions = { ...options, ...options.webgl };
       break;
