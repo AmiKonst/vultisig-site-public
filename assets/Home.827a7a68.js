@@ -1,4 +1,4 @@
-import { u as useBackedApi, a as useTrustApi, b as useKolsApi, c as useInvestorsApi, d as useAirdropApi, _ as _export_sfc, e as useI18n, r as resolveComponent, o as openBlock, f as createElementBlock, g as createBaseVNode, h as unref, i as createVNode, w as withCtx, B as Button, j as reactive, k as onMounted, t as toDisplayString, F as Fragment, l as renderList, m as baseUrl, n as computed, p as normalizeClass, s as stores, q as watch, v as createTextVNode, x as createBlock, y as createCommentVNode, z as numberWithSpaces, A as createStaticVNode, C as delay, D as resolveDirective, E as withDirectives, G as storeToRefs } from './index.a6e84219.js';
+import { u as useBackedApi, a as useTrustApi, b as useKolsApi, c as useInvestorsApi, d as useAirdropApi, _ as _export_sfc, e as useI18n, r as resolveComponent, o as openBlock, f as createElementBlock, g as createBaseVNode, h as unref, i as createVNode, w as withCtx, B as Button, j as reactive, k as onMounted, t as toDisplayString, F as Fragment, l as renderList, m as baseUrl, n as computed, p as normalizeClass, s as stores, q as watch, v as createTextVNode, x as createBlock, y as createCommentVNode, z as numberWithSpaces, A as createStaticVNode, C as delay, D as resolveDirective, E as withDirectives, G as storeToRefs } from './index.999669dc.js';
 
 const api = {
     backed: () => useBackedApi(),
@@ -747,6 +747,7 @@ const _sfc_main$3 = {
   setup(__props) {
 
     const { t, tm, rt } = useI18n();
+    const locale = stores.locale();
 
     const data = reactive({
         slides: []
@@ -800,6 +801,10 @@ const _sfc_main$3 = {
 
 
     onMounted(() => {
+        data.slides = items.value?.length ? [items.value[0]] : [];
+    });
+
+    watch(() => locale.locale, () => {
         data.slides = items.value?.length ? [items.value[0]] : [];
     });
 
@@ -877,6 +882,7 @@ return (_ctx, _cache) => {
         ]
       ]),
       createVNode(Steps, {
+        class: "mobile-only",
         total: items.value.length,
         value: id.value + 1
       }, null, 8 /* PROPS */, ["total", "value"])

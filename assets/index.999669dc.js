@@ -46224,13 +46224,13 @@ const routes = [
     {
         path: '/',
         name: 'home',
-        component: () => __vitePreload(() => import('./Home.8b49760e.js'),true?["assets/Home.8b49760e.js","assets/Home.866d21e1.css"]:void 0),
+        component: () => __vitePreload(() => import('./Home.827a7a68.js'),true?["assets/Home.827a7a68.js","assets/Home.866d21e1.css"]:void 0),
         abort: []
     },
     {
         path: '/error',
         name: 'error',
-        component: () => __vitePreload(() => import('./Error.98f853ed.js'),true?["assets/Error.98f853ed.js","assets/Error.b7bdf131.css"]:void 0),
+        component: () => __vitePreload(() => import('./Error.5fb13c3a.js'),true?["assets/Error.5fb13c3a.js","assets/Error.b7bdf131.css"]:void 0),
         abort: []
     },
     {
@@ -54549,6 +54549,16 @@ onMounted(() => {
         ul.addEventListener('scroll', handleScroll);
         ul.addEventListener('touchstart', handleTouchStart);
     }
+
+    if (data.isMobile) {
+        document.querySelector('html').style.overflow = 'hidden';
+    }
+});
+
+onBeforeUnmount(() => {
+    if (data.isMobile) {
+        document.querySelector('html').style.overflow = 'auto';
+    }
 });
 
 return (_ctx, _cache) => {
@@ -55435,7 +55445,7 @@ const browserExt = {
   },
   test: () => true,
   load: async () => {
-    await __vitePreload(() => import('./browserAll.bd242d63.js'),true?["assets/browserAll.bd242d63.js","assets/init.47a419ac.js","assets/colorToUniform.08ac551a.js"]:void 0);
+    await __vitePreload(() => import('./browserAll.a3a45b43.js'),true?["assets/browserAll.a3a45b43.js","assets/init.49ef1397.js","assets/colorToUniform.08ac551a.js"]:void 0);
   }
 };
 
@@ -55447,7 +55457,7 @@ const webworkerExt = {
   },
   test: () => typeof self !== "undefined" && self.WorkerGlobalScope !== void 0,
   load: async () => {
-    await __vitePreload(() => import('./webworkerAll.db8f8b21.js'),true?["assets/webworkerAll.db8f8b21.js","assets/init.47a419ac.js","assets/colorToUniform.08ac551a.js"]:void 0);
+    await __vitePreload(() => import('./webworkerAll.6c56ddf3.js'),true?["assets/webworkerAll.6c56ddf3.js","assets/init.49ef1397.js","assets/colorToUniform.08ac551a.js"]:void 0);
   }
 };
 
@@ -65907,14 +65917,14 @@ async function autoDetectRenderer(options) {
   for (let i = 0; i < preferredOrder.length; i++) {
     const rendererType = preferredOrder[i];
     if (rendererType === "webgpu" && await isWebGPUSupported()) {
-      const { WebGPURenderer } = await __vitePreload(() => import('./WebGPURenderer.b54c586c.js'),true?["assets/WebGPURenderer.b54c586c.js","assets/colorToUniform.08ac551a.js","assets/SharedSystems.ef13fc5c.js"]:void 0);
+      const { WebGPURenderer } = await __vitePreload(() => import('./WebGPURenderer.bd56e677.js'),true?["assets/WebGPURenderer.bd56e677.js","assets/colorToUniform.08ac551a.js","assets/SharedSystems.028a5e0f.js"]:void 0);
       RendererClass = WebGPURenderer;
       finalOptions = { ...options, ...options.webgpu };
       break;
     } else if (rendererType === "webgl" && isWebGLSupported(
       options.failIfMajorPerformanceCaveat ?? AbstractRenderer.defaultOptions.failIfMajorPerformanceCaveat
     )) {
-      const { WebGLRenderer } = await __vitePreload(() => import('./WebGLRenderer.29af0643.js'),true?["assets/WebGLRenderer.29af0643.js","assets/colorToUniform.08ac551a.js","assets/SharedSystems.ef13fc5c.js"]:void 0);
+      const { WebGLRenderer } = await __vitePreload(() => import('./WebGLRenderer.e600e53d.js'),true?["assets/WebGLRenderer.e600e53d.js","assets/colorToUniform.08ac551a.js","assets/SharedSystems.028a5e0f.js"]:void 0);
       RendererClass = WebGLRenderer;
       finalOptions = { ...options, ...options.webgl };
       break;
