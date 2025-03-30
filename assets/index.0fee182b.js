@@ -42353,6 +42353,8 @@ const message = messages;
 
 const delay = (time) => new Promise((res) => setTimeout(res, time));
 
+const baseUrl = `${'/' + "/vultisig-site-public" }`;
+
 const paramsSerializer = (params) => qs.stringify(params, { indices: false });
 
 const placeOptionList = (payload) => {
@@ -46222,13 +46224,13 @@ const routes = [
     {
         path: '/',
         name: 'home',
-        component: () => __vitePreload(() => import('./Home.0db74580.js'),true?["assets/Home.0db74580.js","assets/Home.e70482b0.css"]:void 0),
+        component: () => __vitePreload(() => import('./Home.c1c8ac0e.js'),true?["assets/Home.c1c8ac0e.js","assets/Home.e70482b0.css"]:void 0),
         abort: []
     },
     {
         path: '/error',
         name: 'error',
-        component: () => __vitePreload(() => import('./Error.d3ec2304.js'),true?["assets/Error.d3ec2304.js","assets/Error.b7bdf131.css"]:void 0),
+        component: () => __vitePreload(() => import('./Error.5432a025.js'),true?["assets/Error.5432a025.js","assets/Error.b7bdf131.css"]:void 0),
         abort: []
     },
     {
@@ -53508,7 +53510,7 @@ const useLocaleStore = defineStore('locale', {
     }),
     actions: {
         async setLocale(locale) {
-            const response = await fetch(`/i18n/${locale}.json`);
+            const response = await fetch(`${baseUrl}/i18n/${locale}.json`);
             const messages = await response.json();
 
             this.i18n.global.setLocaleMessage(locale, messages);
@@ -53620,9 +53622,9 @@ const _export_sfc = (sfc, props) => {
 };
 
 const _hoisted_1$b = ["width", "height", "fill"];
-const _hoisted_2$7 = { key: 0 };
-const _hoisted_3$5 = ["href", "xlink:href"];
-const _hoisted_4$3 = ["xlink:href", "width", "height"];
+const _hoisted_2$8 = { key: 0 };
+const _hoisted_3$6 = ["href", "xlink:href"];
+const _hoisted_4$4 = ["xlink:href", "width", "height"];
 
 
 const _sfc_main$g = {
@@ -53653,19 +53655,19 @@ return (_ctx, _cache) => {
     (url.value.includes('/svg-sprite.svg'))
       ? (openBlock(), createElementBlock(Fragment, { key: 0 }, [
           (props.title)
-            ? (openBlock(), createElementBlock("title", _hoisted_2$7, toDisplayString$1(props.title), 1 /* TEXT */))
+            ? (openBlock(), createElementBlock("title", _hoisted_2$8, toDisplayString$1(props.title), 1 /* TEXT */))
             : createCommentVNode("v-if", true),
           createBaseVNode("use", {
             href: url.value,
             "xlink:href": url.value
-          }, null, 8 /* PROPS */, _hoisted_3$5)
+          }, null, 8 /* PROPS */, _hoisted_3$6)
         ], 64 /* STABLE_FRAGMENT */))
       : (openBlock(), createElementBlock("image", {
           key: 1,
           "xlink:href": url.value,
           width: props.size ? props.size[0] : null,
           height: props.size ? props.size[1] : null
-        }, null, 8 /* PROPS */, _hoisted_4$3))
+        }, null, 8 /* PROPS */, _hoisted_4$4))
   ], 8 /* PROPS */, _hoisted_1$b))
 }
 }
@@ -54199,18 +54201,16 @@ const Vue3TouchEvents = {
 
 function _typeof(e){return _typeof="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(e){return typeof e}:function(e){return e&&"function"==typeof Symbol&&e.constructor===Symbol&&e!==Symbol.prototype?"symbol":typeof e},_typeof(e)}function plugin(e,n){if(!e.vueAxiosInstalled){var o=isAxiosLike(n)?migrateToMultipleInstances(n):n;if(isValidConfig(o)){var t=getVueVersion(e);if(t){var i=t<3?registerOnVue2:registerOnVue3;Object.keys(o).forEach((function(n){i(e,n,o[n]);})),e.vueAxiosInstalled=!0;}else console.error("[vue-axios] unknown Vue version");}else console.error("[vue-axios] configuration is invalid, expected options are either <axios_instance> or { <registration_key>: <axios_instance> }");}}function registerOnVue2(e,n,o){Object.defineProperty(e.prototype,n,{get:function(){return o}}),e[n]=o;}function registerOnVue3(e,n,o){e.config.globalProperties[n]=o,e[n]=o;}function isAxiosLike(e){return e&&"function"==typeof e.get&&"function"==typeof e.post}function migrateToMultipleInstances(e){return {axios:e,$http:e}}function isValidConfig(e){return "object"===_typeof(e)&&Object.keys(e).every((function(n){return isAxiosLike(e[n])}))}function getVueVersion(e){return e&&e.version&&Number(e.version.split(".")[0])}"object"==("undefined"==typeof exports?"undefined":_typeof(exports))?module.exports=plugin:"function"==typeof define&&define.amd?define([],(function(){return plugin})):window.Vue&&window.axios&&window.Vue.use&&Vue.use(plugin,window.axios);
 
-const _imports_0 = "/vultisig-site-public/img/logo.svg";
-
 const Loader_vue_vue_type_style_index_0_scoped_cc971575_lang = '';
 
 const _hoisted_1$a = {
   key: 0,
   class: "inside"
 };
-const _hoisted_2$6 = ["stroke"];
-const _hoisted_3$4 = ["stop-color"];
-const _hoisted_4$2 = ["stop-color"];
-const _hoisted_5$2 = ["stop-color"];
+const _hoisted_2$7 = ["stroke"];
+const _hoisted_3$5 = ["stop-color"];
+const _hoisted_4$3 = ["stop-color"];
+const _hoisted_5$3 = ["stop-color"];
 const _hoisted_6$1 = ["fill"];
 const _hoisted_7$1 = ["fill"];
 
@@ -54284,15 +54284,15 @@ return (_ctx, _cache) => {
             createBaseVNode("stop", {
               offset: "0%",
               "stop-color": insideColors.value[0]
-            }, null, 8 /* PROPS */, _hoisted_3$4),
+            }, null, 8 /* PROPS */, _hoisted_3$5),
             createBaseVNode("stop", {
               offset: "50%",
               "stop-color": insideColors.value[1]
-            }, null, 8 /* PROPS */, _hoisted_4$2),
+            }, null, 8 /* PROPS */, _hoisted_4$3),
             createBaseVNode("stop", {
               offset: "100%",
               "stop-color": insideColors.value[2]
-            }, null, 8 /* PROPS */, _hoisted_5$2)
+            }, null, 8 /* PROPS */, _hoisted_5$3)
           ]),
           createBaseVNode("path", {
             fill: `url(#${id})`,
@@ -54307,7 +54307,7 @@ return (_ctx, _cache) => {
               values: "\r\n                    M0 77 \r\n                    C 473,283\r\n                      822,-40\r\n                      1920,116 \r\n                    \r\n                    V 359 \r\n                    H 0 \r\n                    V 67 \r\n                    Z; \r\n\r\n                    M0 77 \r\n                    C 473,-40\r\n                      1222,283\r\n                      1920,136 \r\n                    \r\n                    V 359 \r\n                    H 0 \r\n                    V 67 \r\n                    Z; \r\n\r\n                    M0 77 \r\n                    C 973,260\r\n                      1722,-53\r\n                      1920,120 \r\n                    \r\n                    V 359 \r\n                    H 0 \r\n                    V 67 \r\n                    Z; \r\n\r\n                    M0 77 \r\n                    C 473,283\r\n                      822,-40\r\n                      1920,116 \r\n                    \r\n                    V 359 \r\n                    H 0 \r\n                    V 67 \r\n                    Z\r\n                "
             }, null, 8 /* PROPS */, _hoisted_7$1)
           ], 8 /* PROPS */, _hoisted_6$1)
-        ], 8 /* PROPS */, _hoisted_2$6))
+        ], 8 /* PROPS */, _hoisted_2$7))
       ]))
     : (openBlock(), createElementBlock("ul", {
         key: 1,
@@ -54374,7 +54374,7 @@ const IconButton = /*#__PURE__*/_export_sfc(_sfc_main$e, [['__scopeId',"data-v-8
 const Button_vue_vue_type_style_index_0_scoped_702b1db3_lang = '';
 
 const _hoisted_1$8 = ["disabled"];
-const _hoisted_2$5 = { key: 1 };
+const _hoisted_2$6 = { key: 1 };
 
 
 const _sfc_main$d = {
@@ -54403,7 +54403,7 @@ return (_ctx, _cache) => {
         }, null, 8 /* PROPS */, ["icon"]))
       : createCommentVNode("v-if", true),
     (props.name)
-      ? (openBlock(), createElementBlock("span", _hoisted_2$5, toDisplayString$1(props.name), 1 /* TEXT */))
+      ? (openBlock(), createElementBlock("span", _hoisted_2$6, toDisplayString$1(props.name), 1 /* TEXT */))
       : createCommentVNode("v-if", true),
     renderSlot(_ctx.$slots, "default", {}, undefined, true),
     (props.loading)
@@ -54593,10 +54593,10 @@ const OptionsList = /*#__PURE__*/_export_sfc(_sfc_main$c, [['__file',"D:/job/vul
 const Select_vue_vue_type_style_index_0_lang = '';
 
 const _hoisted_1$7 = ["placeholder", "value"];
-const _hoisted_2$4 = ["title"];
-const _hoisted_3$3 = ["value", "onClick"];
-const _hoisted_4$1 = { class: "actions-block" };
-const _hoisted_5$1 = { class: "error" };
+const _hoisted_2$5 = ["title"];
+const _hoisted_3$4 = ["value", "onClick"];
+const _hoisted_4$2 = { class: "actions-block" };
+const _hoisted_5$2 = { class: "error" };
 
 
 const _sfc_main$b = {
@@ -54716,7 +54716,7 @@ return (_ctx, _cache) => {
       createBaseVNode("span", {
         class: "placeholder",
         title: props.placeholder
-      }, toDisplayString$1(props.placeholder), 9 /* TEXT, PROPS */, _hoisted_2$4),
+      }, toDisplayString$1(props.placeholder), 9 /* TEXT, PROPS */, _hoisted_2$5),
       (valueIcon.value || props.icon)
         ? (openBlock(), createBlock(_component_Icon, {
             key: 0,
@@ -54758,14 +54758,14 @@ return (_ctx, _cache) => {
                     }, null, 512 /* NEED_PATCH */), [
                       [vShow, data.selected === option.code]
                     ])
-                  ], 10 /* CLASS, PROPS */, _hoisted_3$3))
+                  ], 10 /* CLASS, PROPS */, _hoisted_3$4))
                 }), 128 /* KEYED_FRAGMENT */))
               ])
             ]),
             _: 3 /* FORWARDED */
           }, 8 /* PROPS */, ["field", "placeOptions"]))
         : createCommentVNode("v-if", true),
-      createBaseVNode("div", _hoisted_4$1, [
+      createBaseVNode("div", _hoisted_4$2, [
         (props.clearable && data.selected)
           ? (openBlock(), createBlock(IconButton, {
               key: 0,
@@ -54781,7 +54781,7 @@ return (_ctx, _cache) => {
         })
       ])
     ]),
-    createBaseVNode("span", _hoisted_5$1, toDisplayString$1(props.error), 1 /* TEXT */)
+    createBaseVNode("span", _hoisted_5$2, toDisplayString$1(props.error), 1 /* TEXT */)
   ], 2 /* CLASS */))
 }
 }
@@ -54891,7 +54891,9 @@ const KebabMenu = /*#__PURE__*/_export_sfc(_sfc_main$a, [['__file',"D:/job/vulti
 
 const Header_vue_vue_type_style_index_0_scoped_2e031dc1_lang = '';
 
-const _hoisted_1$6 = { class: "desktop-only" };
+const _hoisted_1$6 = { href: "/" };
+const _hoisted_2$4 = ["src"];
+const _hoisted_3$3 = { class: "desktop-only" };
 
     
 const _sfc_main$9 = {
@@ -54936,14 +54938,14 @@ return (_ctx, _cache) => {
     style: normalizeStyle({ transform: data.transform })
   }, [
     createBaseVNode("div", null, [
-      _cache[0] || (_cache[0] = createBaseVNode("a", { href: "/" }, [
+      createBaseVNode("a", _hoisted_1$6, [
         createBaseVNode("img", {
-          src: _imports_0,
+          src: `${unref(baseUrl)}/img/logo.svg`,
           alt: "Vultisig"
-        }),
-        createBaseVNode("span", null, "Vultisig")
-      ], -1 /* HOISTED */)),
-      createBaseVNode("ul", _hoisted_1$6, [
+        }, null, 8 /* PROPS */, _hoisted_2$4),
+        _cache[0] || (_cache[0] = createBaseVNode("span", null, "Vultisig", -1 /* HOISTED */))
+      ]),
+      createBaseVNode("ul", _hoisted_3$3, [
         (openBlock(true), createElementBlock(Fragment, null, renderList(items.value, (item) => {
           return (openBlock(), createElementBlock("li", {
             key: item.name,
@@ -55026,8 +55028,10 @@ const _hoisted_1$5 = {
   class: "footer",
   id: "footer"
 };
-const _hoisted_2$3 = ["href"];
-const _hoisted_3$2 = { class: "social-links" };
+const _hoisted_2$3 = { href: "/" };
+const _hoisted_3$2 = ["src"];
+const _hoisted_4$1 = ["href"];
+const _hoisted_5$1 = { class: "social-links" };
 
     
 const _sfc_main$8 = {
@@ -55099,13 +55103,13 @@ return (_ctx, _cache) => {
 
   return (openBlock(), createElementBlock("div", _hoisted_1$5, [
     createBaseVNode("div", null, [
-      _cache[0] || (_cache[0] = createBaseVNode("a", { href: "/" }, [
+      createBaseVNode("a", _hoisted_2$3, [
         createBaseVNode("img", {
-          src: _imports_0,
+          src: `${unref(baseUrl)}/img/logo.svg`,
           alt: "Vultisig"
-        }),
-        createBaseVNode("span", null, "Vultisig")
-      ], -1 /* HOISTED */)),
+        }, null, 8 /* PROPS */, _hoisted_3$2),
+        _cache[0] || (_cache[0] = createBaseVNode("span", null, "Vultisig", -1 /* HOISTED */))
+      ]),
       createBaseVNode("ul", null, [
         (openBlock(), createElementBlock(Fragment, null, renderList(items, (item) => {
           return createBaseVNode("li", {
@@ -55129,7 +55133,7 @@ return (_ctx, _cache) => {
                         target: "_blank",
                         class: "subitem-link",
                         href: subitem.href
-                      }, toDisplayString$1(unref(t)(subitem.name)), 9 /* TEXT, PROPS */, _hoisted_2$3)
+                      }, toDisplayString$1(unref(t)(subitem.name)), 9 /* TEXT, PROPS */, _hoisted_4$1)
                     ]))
                   }), 128 /* KEYED_FRAGMENT */))
                 ])
@@ -55139,7 +55143,7 @@ return (_ctx, _cache) => {
           ])
         }), 64 /* STABLE_FRAGMENT */))
       ]),
-      createBaseVNode("div", _hoisted_3$2, [
+      createBaseVNode("div", _hoisted_5$1, [
         (openBlock(), createElementBlock(Fragment, null, renderList(socials, (item, id) => {
           return createBaseVNode("a", {
             target: "_blank",
@@ -55430,7 +55434,7 @@ const browserExt = {
   },
   test: () => true,
   load: async () => {
-    await __vitePreload(() => import('./browserAll.839097be.js'),true?["assets/browserAll.839097be.js","assets/init.f5f82839.js","assets/colorToUniform.08ac551a.js"]:void 0);
+    await __vitePreload(() => import('./browserAll.932a74c1.js'),true?["assets/browserAll.932a74c1.js","assets/init.cf0d686f.js","assets/colorToUniform.08ac551a.js"]:void 0);
   }
 };
 
@@ -55442,7 +55446,7 @@ const webworkerExt = {
   },
   test: () => typeof self !== "undefined" && self.WorkerGlobalScope !== void 0,
   load: async () => {
-    await __vitePreload(() => import('./webworkerAll.a01dbab9.js'),true?["assets/webworkerAll.a01dbab9.js","assets/init.f5f82839.js","assets/colorToUniform.08ac551a.js"]:void 0);
+    await __vitePreload(() => import('./webworkerAll.bbe978df.js'),true?["assets/webworkerAll.bbe978df.js","assets/init.cf0d686f.js","assets/colorToUniform.08ac551a.js"]:void 0);
   }
 };
 
@@ -65902,14 +65906,14 @@ async function autoDetectRenderer(options) {
   for (let i = 0; i < preferredOrder.length; i++) {
     const rendererType = preferredOrder[i];
     if (rendererType === "webgpu" && await isWebGPUSupported()) {
-      const { WebGPURenderer } = await __vitePreload(() => import('./WebGPURenderer.ce2d1020.js'),true?["assets/WebGPURenderer.ce2d1020.js","assets/colorToUniform.08ac551a.js","assets/SharedSystems.e8ab0de2.js"]:void 0);
+      const { WebGPURenderer } = await __vitePreload(() => import('./WebGPURenderer.e4befcbf.js'),true?["assets/WebGPURenderer.e4befcbf.js","assets/colorToUniform.08ac551a.js","assets/SharedSystems.a124ee96.js"]:void 0);
       RendererClass = WebGPURenderer;
       finalOptions = { ...options, ...options.webgpu };
       break;
     } else if (rendererType === "webgl" && isWebGLSupported(
       options.failIfMajorPerformanceCaveat ?? AbstractRenderer.defaultOptions.failIfMajorPerformanceCaveat
     )) {
-      const { WebGLRenderer } = await __vitePreload(() => import('./WebGLRenderer.6cf69cc9.js'),true?["assets/WebGLRenderer.6cf69cc9.js","assets/colorToUniform.08ac551a.js","assets/SharedSystems.e8ab0de2.js"]:void 0);
+      const { WebGLRenderer } = await __vitePreload(() => import('./WebGLRenderer.8cf2e680.js'),true?["assets/WebGLRenderer.8cf2e680.js","assets/colorToUniform.08ac551a.js","assets/SharedSystems.a124ee96.js"]:void 0);
       RendererClass = WebGLRenderer;
       finalOptions = { ...options, ...options.webgl };
       break;
@@ -76219,12 +76223,12 @@ const data = reactive({
     bgTextures: [
         {
             code: 'logo',
-            url: `/img/bg/logo.svg`,
+            url: `${ baseUrl }/img/bg/logo.svg`,
             width: 43,
             height: 41
         }, {
             code: 'back-logo',
-            url: `/img/bg/back-logo.svg`,
+            url: `${ baseUrl }/img/bg/back-logo.svg`,
             width: 57,
             height: 56
         }
@@ -76232,7 +76236,7 @@ const data = reactive({
     redeemTextures: [
         // {
         //     code: 'logo',
-        //     url: `/img/bg/logo.svg`,
+        //     url: `${ baseUrl }/img/bg/logo.svg`,
         //     width: 43,
         //     height: 41
         // }
@@ -76240,7 +76244,7 @@ const data = reactive({
     recursionLogoTextures: [
         // {
         //     code: 'logo',
-        //     url: `/img/logo-light.svg`,
+        //     url: `${ baseUrl }/img/logo-light.svg`,
         //     width: 86,
         //     height: 82
         // }
@@ -76808,4 +76812,4 @@ app.config.globalProperties.$message = message;
 
 app.mount('#vultisig-landing-app');
 
-export { deprecation as $, delay as A, Button as B, resolveDirective as C, _imports_0 as D, withDirectives as E, Fragment as F, storeToRefs as G, ExtensionType as H, removeItems as I, EventEmitter as J, warn as K, extensions as L, Container as M, Geometry as N, UniformGroup as O, Point as P, BindGroup as Q, TexturePool as R, Texture as S, Ticker as T, UPDATE_PRIORITY as U, RendererType as V, Bounds as W, Matrix as X, ViewContainer as Y, GraphicsContext as Z, _export_sfc as _, useTrustApi as a, v8_0_0 as a0, Buffer as a1, BufferUsage as a2, Color as a3, TextStyle as a4, generateTextStyleKey as a5, BigPool as a6, BatchableGraphics as a7, getAdjustedBlendModeBlend as a8, getAttributeInfoFromFormat as a9, GraphicsContextSystem as aA, getTextureBatchBindGroup as aB, fastCopy as aC, STENCIL_MODES as aD, createIdFromString as aE, CLEAR as aF, CanvasSource as aG, TextureSource as aH, AbstractRenderer as aI, TextureMatrix as aJ, DefaultBatcher as aK, getGlobalBounds as aL, FilterEffect as aM, Sprite as aN, unsafeEvalSupported as aO, uid as aP, SystemRunner as aQ, multiplyColors as aR, UPDATE_COLOR as aS, UPDATE_BLEND as aT, UPDATE_VISIBLE as aU, getLocalBounds as aV, VERSION as aW, RendererInitHook as aX, ViewableBuffer as aa, Shader as ab, GlProgram as ac, GpuProgram as ad, TextureStyle as ae, compileHighShaderGpuProgram as af, roundPixelsBit as ag, compileHighShaderGlProgram as ah, roundPixelsBitGl as ai, getMaxTexturesPerBatch as aj, colorBit as ak, generateTextureBatchBit as al, colorBitGl as am, generateTextureBatchBitGl as an, getBatchSamplersUniformGroup as ao, BitmapFontManager as ap, getBitmapTextLayout as aq, Cache as ar, updateQuadBounds as as, DOMAdapter as at, CanvasPool as au, Rectangle as av, CanvasTextMetrics as aw, fontStringFromTextStyle as ax, getCanvasFillStyle as ay, nextPow2 as az, useKolsApi as b, useInvestorsApi as c, useAirdropApi as d, useI18n as e, createElementBlock as f, createBaseVNode as g, unref as h, createVNode as i, reactive as j, onMounted as k, renderList as l, computed as m, normalizeClass as n, openBlock as o, watch as p, createTextVNode as q, resolveComponent as r, stores$1 as s, toDisplayString$1 as t, useBackedApi as u, createBlock as v, withCtx as w, createCommentVNode as x, numberWithSpaces as y, createStaticVNode as z };
+export { deprecation as $, createStaticVNode as A, Button as B, delay as C, resolveDirective as D, withDirectives as E, Fragment as F, storeToRefs as G, ExtensionType as H, removeItems as I, EventEmitter as J, warn as K, extensions as L, Container as M, Geometry as N, UniformGroup as O, Point as P, BindGroup as Q, TexturePool as R, Texture as S, Ticker as T, UPDATE_PRIORITY as U, RendererType as V, Bounds as W, Matrix as X, ViewContainer as Y, GraphicsContext as Z, _export_sfc as _, useTrustApi as a, v8_0_0 as a0, Buffer as a1, BufferUsage as a2, Color as a3, TextStyle as a4, generateTextStyleKey as a5, BigPool as a6, BatchableGraphics as a7, getAdjustedBlendModeBlend as a8, getAttributeInfoFromFormat as a9, GraphicsContextSystem as aA, getTextureBatchBindGroup as aB, fastCopy as aC, STENCIL_MODES as aD, createIdFromString as aE, CLEAR as aF, CanvasSource as aG, TextureSource as aH, AbstractRenderer as aI, TextureMatrix as aJ, DefaultBatcher as aK, getGlobalBounds as aL, FilterEffect as aM, Sprite as aN, unsafeEvalSupported as aO, uid as aP, SystemRunner as aQ, multiplyColors as aR, UPDATE_COLOR as aS, UPDATE_BLEND as aT, UPDATE_VISIBLE as aU, getLocalBounds as aV, VERSION as aW, RendererInitHook as aX, ViewableBuffer as aa, Shader as ab, GlProgram as ac, GpuProgram as ad, TextureStyle as ae, compileHighShaderGpuProgram as af, roundPixelsBit as ag, compileHighShaderGlProgram as ah, roundPixelsBitGl as ai, getMaxTexturesPerBatch as aj, colorBit as ak, generateTextureBatchBit as al, colorBitGl as am, generateTextureBatchBitGl as an, getBatchSamplersUniformGroup as ao, BitmapFontManager as ap, getBitmapTextLayout as aq, Cache as ar, updateQuadBounds as as, DOMAdapter as at, CanvasPool as au, Rectangle as av, CanvasTextMetrics as aw, fontStringFromTextStyle as ax, getCanvasFillStyle as ay, nextPow2 as az, useKolsApi as b, useInvestorsApi as c, useAirdropApi as d, useI18n as e, createElementBlock as f, createBaseVNode as g, unref as h, createVNode as i, reactive as j, onMounted as k, renderList as l, baseUrl as m, computed as n, openBlock as o, normalizeClass as p, watch as q, resolveComponent as r, stores$1 as s, toDisplayString$1 as t, useBackedApi as u, createTextVNode as v, withCtx as w, createBlock as x, createCommentVNode as y, numberWithSpaces as z };

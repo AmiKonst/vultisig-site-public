@@ -1,4 +1,4 @@
-import { u as useBackedApi, a as useTrustApi, b as useKolsApi, c as useInvestorsApi, d as useAirdropApi, _ as _export_sfc, e as useI18n, r as resolveComponent, o as openBlock, f as createElementBlock, g as createBaseVNode, h as unref, i as createVNode, w as withCtx, B as Button, j as reactive, k as onMounted, t as toDisplayString, F as Fragment, l as renderList, m as computed, n as normalizeClass, s as stores, p as watch, q as createTextVNode, v as createBlock, x as createCommentVNode, y as numberWithSpaces, z as createStaticVNode, A as delay, C as resolveDirective, D as _imports_0$2, E as withDirectives, G as storeToRefs } from './index.493032f5.js';
+import { u as useBackedApi, a as useTrustApi, b as useKolsApi, c as useInvestorsApi, d as useAirdropApi, _ as _export_sfc, e as useI18n, r as resolveComponent, o as openBlock, f as createElementBlock, g as createBaseVNode, h as unref, i as createVNode, w as withCtx, B as Button, j as reactive, k as onMounted, t as toDisplayString, F as Fragment, l as renderList, m as baseUrl, n as computed, p as normalizeClass, s as stores, q as watch, v as createTextVNode, x as createBlock, y as createCommentVNode, z as numberWithSpaces, A as createStaticVNode, C as delay, D as resolveDirective, E as withDirectives, G as storeToRefs } from './index.0fee182b.js';
 
 const api = {
     backed: () => useBackedApi(),
@@ -13,7 +13,7 @@ const Welcome_vue_vue_type_style_index_0_scoped_f32f37de_lang = '';
 const _hoisted_1$b = { id: "welcome" };
 const _hoisted_2$a = ["innerHTML"];
 const _hoisted_3$9 = ["innerHTML"];
-const _hoisted_4$6 = { class: "scroll-down" };
+const _hoisted_4$7 = { class: "scroll-down" };
 
     
 const _sfc_main$e = {
@@ -42,7 +42,7 @@ return (_ctx, _cache) => {
         ]),
         _: 1 /* STABLE */
       }),
-      createBaseVNode("div", _hoisted_4$6, [
+      createBaseVNode("div", _hoisted_4$7, [
         createVNode(_component_Icon, { icon: "scroll-down" }),
         createVNode(_component_Icon, { icon: "scroll-down" }),
         createVNode(_component_Icon, { icon: "scroll-down" })
@@ -55,13 +55,12 @@ return (_ctx, _cache) => {
 };
 const Welcome = /*#__PURE__*/_export_sfc(_sfc_main$e, [['__scopeId',"data-v-f32f37de"],['__file',"D:/job/vultisig/vultisig-landing/src/pages/Home/components/Welcome.vue"]]);
 
-const _imports_0$1 = "/vultisig-site-public/img/vult-screens.jpg";
-
 const Trust_vue_vue_type_style_index_0_scoped_de07250f_lang = '';
 
 const _hoisted_1$a = { id: "trust" };
 const _hoisted_2$9 = ["src", "alt"];
 const _hoisted_3$8 = { class: "screens" };
+const _hoisted_4$6 = ["src"];
 
     
 const _sfc_main$d = {
@@ -88,7 +87,7 @@ return (_ctx, _cache) => {
         (openBlock(true), createElementBlock(Fragment, null, renderList(data.items, (item, id) => {
           return (openBlock(), createElementBlock("li", { key: id }, [
             createBaseVNode("img", {
-              src: `/img/trust/${item.logo}`,
+              src: `${unref(baseUrl)}/img/trust/${item.logo}`,
               alt: item.title
             }, null, 8 /* PROPS */, _hoisted_2$9),
             createBaseVNode("span", null, toDisplayString(item.title), 1 /* TEXT */)
@@ -100,10 +99,10 @@ return (_ctx, _cache) => {
         ])
       ]),
       createBaseVNode("div", _hoisted_3$8, [
-        _cache[0] || (_cache[0] = createBaseVNode("img", {
-          src: _imports_0$1,
+        createBaseVNode("img", {
+          src: `${unref(baseUrl)}/img/vult-screens.jpg`,
           alt: "Vultisig"
-        }, null, -1 /* HOISTED */)),
+        }, null, 8 /* PROPS */, _hoisted_4$6),
         createBaseVNode("label", null, toDisplayString(unref(t)('pages.home.trust.slogan')), 1 /* TEXT */)
       ])
     ])
@@ -152,15 +151,13 @@ return (_ctx, _cache) => {
 };
 const Slogans = /*#__PURE__*/_export_sfc(_sfc_main$c, [['__scopeId',"data-v-a078e414"],['__file',"D:/job/vultisig/vultisig-landing/src/pages/Home/components/Slogans.vue"]]);
 
-const _imports_0 = "/vultisig-site-public/img/features.png";
-
 const Features_vue_vue_type_style_index_0_scoped_ec08b062_lang = '';
 
 const _hoisted_1$8 = { id: "features" };
 const _hoisted_2$8 = ["onClick"];
 const _hoisted_3$7 = { class: "description" };
-const _hoisted_4$5 = ["alt"];
-const _hoisted_5$5 = ["alt"];
+const _hoisted_4$5 = ["src", "alt"];
+const _hoisted_5$5 = ["src", "alt"];
 
     
 const _sfc_main$b = {
@@ -234,11 +231,11 @@ return (_ctx, _cache) => {
       createBaseVNode("div", _hoisted_3$7, [
         createBaseVNode("div", null, [
           createBaseVNode("img", {
-            src: _imports_0,
+            src: `${unref(baseUrl)}/img/features.png`,
             alt: unref(t)('pages.home.features.title')
           }, null, 8 /* PROPS */, _hoisted_4$5),
           createBaseVNode("img", {
-            src: _imports_0,
+            src: `${unref(baseUrl)}/img/features.png`,
             alt: unref(t)('pages.home.features.title')
           }, null, 8 /* PROPS */, _hoisted_5$5)
         ]),
@@ -288,7 +285,7 @@ return (_ctx, _cache) => {
           }, [
             createBaseVNode("span", _hoisted_4$4, [
               createBaseVNode("img", {
-                src: `/img/investors/${item.logo}`,
+                src: `${unref(baseUrl)}/img/investors/${item.logo}`,
                 alt: item.name
               }, null, 8 /* PROPS */, _hoisted_5$4)
             ]),
@@ -348,7 +345,7 @@ return (_ctx, _cache) => {
             href: item.link
           }, [
             createBaseVNode("img", {
-              src: `/img/kols/${item.logo}`,
+              src: `${unref(baseUrl)}/img/kols/${item.logo}`,
               alt: item.name
             }, null, 8 /* PROPS */, _hoisted_4$3)
           ], 8 /* PROPS */, _hoisted_3$5))
@@ -682,11 +679,11 @@ return (_ctx, _cache) => {
             href: item.link
           }, [
             createBaseVNode("img", {
-              src: `/img/funds/${item.logo}`,
+              src: `${unref(baseUrl)}/img/funds/${item.logo}`,
               alt: item.name
             }, null, 8 /* PROPS */, _hoisted_4$1),
             createBaseVNode("img", {
-              src: `/img/funds/${item.logo}`,
+              src: `${unref(baseUrl)}/img/funds/${item.logo}`,
               alt: item.name
             }, null, 8 /* PROPS */, _hoisted_5$1)
           ], 8 /* PROPS */, _hoisted_3$2))
@@ -740,7 +737,9 @@ const _hoisted_3$1 = {
 };
 const _hoisted_4 = { class: "items desktop-only" };
 const _hoisted_5 = ["href"];
-const _hoisted_6 = ["href"];
+const _hoisted_6 = ["src"];
+const _hoisted_7 = ["href"];
+const _hoisted_8 = ["src"];
 
     
 const _sfc_main$3 = {
@@ -825,10 +824,10 @@ return (_ctx, _cache) => {
             href: item.link
           }, [
             createBaseVNode("span", null, [
-              _cache[0] || (_cache[0] = createBaseVNode("img", {
-                src: _imports_0$2,
+              createBaseVNode("img", {
+                src: `${unref(baseUrl)}/img/logo.svg`,
                 alt: "Vultisig"
-              }, null, -1 /* HOISTED */)),
+              }, null, 8 /* PROPS */, _hoisted_6),
               createTextVNode(" " + toDisplayString(item.name), 1 /* TEXT */)
             ]),
             createBaseVNode("span", null, toDisplayString(item.description), 1 /* TEXT */),
@@ -850,10 +849,10 @@ return (_ctx, _cache) => {
             href: item.link
           }, [
             createBaseVNode("span", null, [
-              _cache[1] || (_cache[1] = createBaseVNode("img", {
-                src: _imports_0$2,
+              createBaseVNode("img", {
+                src: `${unref(baseUrl)}/img/logo.svg`,
                 alt: "Vultisig"
-              }, null, -1 /* HOISTED */)),
+              }, null, 8 /* PROPS */, _hoisted_8),
               createTextVNode(" " + toDisplayString(item.name), 1 /* TEXT */)
             ]),
             createBaseVNode("span", null, toDisplayString(item.description), 1 /* TEXT */),
@@ -861,7 +860,7 @@ return (_ctx, _cache) => {
               createTextVNode(toDisplayString(unref(t)('pages.home.tweets.read')) + " ", 1 /* TEXT */),
               createVNode(_component_Icon, { icon: "see-all" })
             ])
-          ], 8 /* PROPS */, _hoisted_6))
+          ], 8 /* PROPS */, _hoisted_7))
         }), 128 /* KEYED_FRAGMENT */))
       ])), [
         [
