@@ -267,6 +267,7 @@
   font-weight: bold;
   line-height: 64px;
   color: var(--dark-20);
+  text-align: center;
 }
 #slogans > div ul li.active[data-v-a078e414] {
   color: var(--secondary-500);
