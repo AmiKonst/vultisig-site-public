@@ -46224,13 +46224,13 @@ const routes = [
     {
         path: '/',
         name: 'home',
-        component: () => __vitePreload(() => import('./Home.b1a8272c.js'),true?["assets/Home.b1a8272c.js","assets/Home.e70482b0.css"]:void 0),
+        component: () => __vitePreload(() => import('./Home.8b49760e.js'),true?["assets/Home.8b49760e.js","assets/Home.e70482b0.css"]:void 0),
         abort: []
     },
     {
         path: '/error',
         name: 'error',
-        component: () => __vitePreload(() => import('./Error.c5505cc1.js'),true?["assets/Error.c5505cc1.js","assets/Error.b7bdf131.css"]:void 0),
+        component: () => __vitePreload(() => import('./Error.98f853ed.js'),true?["assets/Error.98f853ed.js","assets/Error.b7bdf131.css"]:void 0),
         abort: []
     },
     {
@@ -54565,7 +54565,7 @@ return (_ctx, _cache) => {
       ref: optionsList,
       style: normalizeStyle({ transform: data.transform, opacity: data.opacity }),
       onTouchstart: startDrag,
-      onTouchmove: withModifiers(onDrag, ["prevent"]),
+      onTouchmove: withModifiers(onDrag, ["stop"]),
       onTouchend: endDrag,
       onClick: click
     }, [
@@ -55435,7 +55435,7 @@ const browserExt = {
   },
   test: () => true,
   load: async () => {
-    await __vitePreload(() => import('./browserAll.3e65c3f7.js'),true?["assets/browserAll.3e65c3f7.js","assets/init.a46c7c2e.js","assets/colorToUniform.08ac551a.js"]:void 0);
+    await __vitePreload(() => import('./browserAll.bd242d63.js'),true?["assets/browserAll.bd242d63.js","assets/init.47a419ac.js","assets/colorToUniform.08ac551a.js"]:void 0);
   }
 };
 
@@ -55447,7 +55447,7 @@ const webworkerExt = {
   },
   test: () => typeof self !== "undefined" && self.WorkerGlobalScope !== void 0,
   load: async () => {
-    await __vitePreload(() => import('./webworkerAll.84a1a96f.js'),true?["assets/webworkerAll.84a1a96f.js","assets/init.a46c7c2e.js","assets/colorToUniform.08ac551a.js"]:void 0);
+    await __vitePreload(() => import('./webworkerAll.db8f8b21.js'),true?["assets/webworkerAll.db8f8b21.js","assets/init.47a419ac.js","assets/colorToUniform.08ac551a.js"]:void 0);
   }
 };
 
@@ -65907,14 +65907,14 @@ async function autoDetectRenderer(options) {
   for (let i = 0; i < preferredOrder.length; i++) {
     const rendererType = preferredOrder[i];
     if (rendererType === "webgpu" && await isWebGPUSupported()) {
-      const { WebGPURenderer } = await __vitePreload(() => import('./WebGPURenderer.025b6d83.js'),true?["assets/WebGPURenderer.025b6d83.js","assets/colorToUniform.08ac551a.js","assets/SharedSystems.0baf6709.js"]:void 0);
+      const { WebGPURenderer } = await __vitePreload(() => import('./WebGPURenderer.b54c586c.js'),true?["assets/WebGPURenderer.b54c586c.js","assets/colorToUniform.08ac551a.js","assets/SharedSystems.ef13fc5c.js"]:void 0);
       RendererClass = WebGPURenderer;
       finalOptions = { ...options, ...options.webgpu };
       break;
     } else if (rendererType === "webgl" && isWebGLSupported(
       options.failIfMajorPerformanceCaveat ?? AbstractRenderer.defaultOptions.failIfMajorPerformanceCaveat
     )) {
-      const { WebGLRenderer } = await __vitePreload(() => import('./WebGLRenderer.3c1dac87.js'),true?["assets/WebGLRenderer.3c1dac87.js","assets/colorToUniform.08ac551a.js","assets/SharedSystems.0baf6709.js"]:void 0);
+      const { WebGLRenderer } = await __vitePreload(() => import('./WebGLRenderer.29af0643.js'),true?["assets/WebGLRenderer.29af0643.js","assets/colorToUniform.08ac551a.js","assets/SharedSystems.ef13fc5c.js"]:void 0);
       RendererClass = WebGLRenderer;
       finalOptions = { ...options, ...options.webgl };
       break;
