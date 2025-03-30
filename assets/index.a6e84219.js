@@ -46224,7 +46224,7 @@ const routes = [
     {
         path: '/',
         name: 'home',
-        component: () => __vitePreload(() => import('./Home.8b49760e.js'),true?["assets/Home.8b49760e.js","assets/Home.e70482b0.css"]:void 0),
+        component: () => __vitePreload(() => import('./Home.8b49760e.js'),true?["assets/Home.8b49760e.js","assets/Home.15c47803.css"]:void 0),
         abort: []
     },
     {
