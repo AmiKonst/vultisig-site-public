@@ -46224,13 +46224,13 @@ const routes = [
     {
         path: '/',
         name: 'home',
-        component: () => __vitePreload(() => import('./Home.827a7a68.js'),true?["assets/Home.827a7a68.js","assets/Home.866d21e1.css"]:void 0),
+        component: () => __vitePreload(() => import('./Home.35ca165a.js'),true?["assets/Home.35ca165a.js","assets/Home.866d21e1.css"]:void 0),
         abort: []
     },
     {
         path: '/error',
         name: 'error',
-        component: () => __vitePreload(() => import('./Error.5fb13c3a.js'),true?["assets/Error.5fb13c3a.js","assets/Error.b7bdf131.css"]:void 0),
+        component: () => __vitePreload(() => import('./Error.e7b855b4.js'),true?["assets/Error.e7b855b4.js","assets/Error.b7bdf131.css"]:void 0),
         abort: []
     },
     {
@@ -54551,13 +54551,13 @@ onMounted(() => {
     }
 
     if (data.isMobile) {
-        document.querySelector('html').style.overflow = 'hidden';
+        document.querySelector('html').style['overflow-y'] = 'hidden';
     }
 });
 
 onBeforeUnmount(() => {
     if (data.isMobile) {
-        document.querySelector('html').style.overflow = 'auto';
+        document.querySelector('html').style['overflow-y'] = 'auto';
     }
 });
 
@@ -55445,7 +55445,7 @@ const browserExt = {
   },
   test: () => true,
   load: async () => {
-    await __vitePreload(() => import('./browserAll.a3a45b43.js'),true?["assets/browserAll.a3a45b43.js","assets/init.49ef1397.js","assets/colorToUniform.08ac551a.js"]:void 0);
+    await __vitePreload(() => import('./browserAll.60d47c25.js'),true?["assets/browserAll.60d47c25.js","assets/init.68763bfe.js","assets/colorToUniform.08ac551a.js"]:void 0);
   }
 };
 
@@ -55457,7 +55457,7 @@ const webworkerExt = {
   },
   test: () => typeof self !== "undefined" && self.WorkerGlobalScope !== void 0,
   load: async () => {
-    await __vitePreload(() => import('./webworkerAll.6c56ddf3.js'),true?["assets/webworkerAll.6c56ddf3.js","assets/init.49ef1397.js","assets/colorToUniform.08ac551a.js"]:void 0);
+    await __vitePreload(() => import('./webworkerAll.31e8e065.js'),true?["assets/webworkerAll.31e8e065.js","assets/init.68763bfe.js","assets/colorToUniform.08ac551a.js"]:void 0);
   }
 };
 
@@ -65917,14 +65917,14 @@ async function autoDetectRenderer(options) {
   for (let i = 0; i < preferredOrder.length; i++) {
     const rendererType = preferredOrder[i];
     if (rendererType === "webgpu" && await isWebGPUSupported()) {
-      const { WebGPURenderer } = await __vitePreload(() => import('./WebGPURenderer.bd56e677.js'),true?["assets/WebGPURenderer.bd56e677.js","assets/colorToUniform.08ac551a.js","assets/SharedSystems.028a5e0f.js"]:void 0);
+      const { WebGPURenderer } = await __vitePreload(() => import('./WebGPURenderer.698822e0.js'),true?["assets/WebGPURenderer.698822e0.js","assets/colorToUniform.08ac551a.js","assets/SharedSystems.24036f8b.js"]:void 0);
       RendererClass = WebGPURenderer;
       finalOptions = { ...options, ...options.webgpu };
       break;
     } else if (rendererType === "webgl" && isWebGLSupported(
       options.failIfMajorPerformanceCaveat ?? AbstractRenderer.defaultOptions.failIfMajorPerformanceCaveat
     )) {
-      const { WebGLRenderer } = await __vitePreload(() => import('./WebGLRenderer.e600e53d.js'),true?["assets/WebGLRenderer.e600e53d.js","assets/colorToUniform.08ac551a.js","assets/SharedSystems.028a5e0f.js"]:void 0);
+      const { WebGLRenderer } = await __vitePreload(() => import('./WebGLRenderer.a04d1d0e.js'),true?["assets/WebGLRenderer.a04d1d0e.js","assets/colorToUniform.08ac551a.js","assets/SharedSystems.24036f8b.js"]:void 0);
       RendererClass = WebGLRenderer;
       finalOptions = { ...options, ...options.webgl };
       break;
