@@ -1306,7 +1306,7 @@ div.footer > div .social-links a[data-v-6c9aa71b] {
 }
 }
 div[data-v-ee7f456b] {
-  position: absolute;
+  position: fixed;
   border-radius: 50%;
   pointer-events: none;
 }
@@ -2007,7 +2007,6 @@ html {
   background-color: var(--white-500);
   color: var(--dark-500);
   overflow: auto;
-  overflow-x: hidden;
 }
 html::-webkit-scrollbar {
   width: var(--scroll-width);

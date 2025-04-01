@@ -1005,6 +1005,7 @@ a > span:first-child svg[data-v-e9fcb834] {
   display: flex;
   flex-direction: column;
   align-items: center;
+  overflow: hidden;
 }
 #airdrop > div[data-v-fddcb5e3] {
   max-width: var(--page-width);
