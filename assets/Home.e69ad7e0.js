@@ -1,4 +1,4 @@
-import { u as useBackedApi, a as useTrustApi, b as useKolsApi, c as useInvestorsApi, d as useAirdropApi, _ as _export_sfc, e as useI18n, r as resolveComponent, o as openBlock, f as createElementBlock, g as createBaseVNode, h as unref, i as createVNode, w as withCtx, B as Button, j as reactive, k as onMounted, t as toDisplayString, F as Fragment, l as renderList, m as baseUrl, n as computed, p as normalizeClass, s as stores, q as watch, v as createTextVNode, x as createBlock, y as createCommentVNode, z as numberWithSpaces, A as createStaticVNode, C as delay, D as resolveDirective, E as withDirectives, G as storeToRefs } from './index.6d176b78.js';
+import { u as useBackedApi, a as useTrustApi, b as useKolsApi, c as useInvestorsApi, d as useAirdropApi, _ as _export_sfc, e as useI18n, r as resolveComponent, o as openBlock, f as createElementBlock, g as createBaseVNode, h as unref, i as createVNode, w as withCtx, B as Button, j as reactive, k as onMounted, t as toDisplayString, F as Fragment, l as renderList, m as baseUrl, n as computed, p as normalizeClass, s as stores, q as watch, v as createTextVNode, x as createBlock, y as createCommentVNode, z as numberWithSpaces, A as createStaticVNode, C as delay, D as resolveDirective, E as withDirectives, G as storeToRefs } from './index.21ae33c3.js';
 
 const api = {
     backed: () => useBackedApi(),
@@ -195,6 +195,12 @@ const _sfc_main$b = {
     };
 
     const setActive = (id) => {
+        if (!id && !items.value?.length) {
+            setTimeout(() => {
+                setActive(0);
+            }, 200);
+            return;
+        }
         data.id = id;
         data.text = '';
 
@@ -799,13 +805,23 @@ const _sfc_main$3 = {
         data.slides.push(items.value[nextId]);
     };
 
+    const start = () => {
+        if (!items.value?.length) {
+            setTimeout(() => {
+                start();
+            }, 200);
+            return;
+        }
+        data.slides = items.value?.length ? [items.value[0]] : [];
+    };
+
 
     onMounted(() => {
-        data.slides = items.value?.length ? [items.value[0]] : [];
+        start();
     });
 
     watch(() => locale.locale, () => {
-        data.slides = items.value?.length ? [items.value[0]] : [];
+        start();
     });
 
 return (_ctx, _cache) => {

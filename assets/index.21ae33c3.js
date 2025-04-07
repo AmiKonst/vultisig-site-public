@@ -34176,7 +34176,7 @@ var objectInspect = function inspect_(obj, options, depth, seen) {
         var ys = arrObjKeys(obj, inspect);
         var isPlainObject = gPO ? gPO(obj) === Object.prototype : obj instanceof Object || obj.constructor === Object;
         var protoTag = obj instanceof Object ? '' : 'null prototype';
-        var stringTag = !isPlainObject && toStringTag && Object(obj) === obj && toStringTag in obj ? $slice.call(toStr$1(obj), 8, -1) : protoTag ? 'Object' : '';
+        var stringTag = !isPlainObject && toStringTag && Object(obj) === obj && toStringTag in obj ? $slice.call(toStr(obj), 8, -1) : protoTag ? 'Object' : '';
         var constructorTag = isPlainObject || typeof obj.constructor !== 'function' ? '' : obj.constructor.name ? obj.constructor.name + ' ' : '';
         var tag = constructorTag + (stringTag || protoTag ? '[' + $join.call($concat$1.call([], stringTag || [], protoTag || []), ': ') + '] ' : '');
         if (ys.length === 0) { return tag + '{}'; }
@@ -34201,13 +34201,13 @@ function quote(s) {
 function canTrustToString(obj) {
     return !toStringTag || !(typeof obj === 'object' && (toStringTag in obj || typeof obj[toStringTag] !== 'undefined'));
 }
-function isArray$6(obj) { return toStr$1(obj) === '[object Array]' && canTrustToString(obj); }
-function isDate$2(obj) { return toStr$1(obj) === '[object Date]' && canTrustToString(obj); }
-function isRegExp$2(obj) { return toStr$1(obj) === '[object RegExp]' && canTrustToString(obj); }
-function isError(obj) { return toStr$1(obj) === '[object Error]' && canTrustToString(obj); }
-function isString$3(obj) { return toStr$1(obj) === '[object String]' && canTrustToString(obj); }
-function isNumber$2(obj) { return toStr$1(obj) === '[object Number]' && canTrustToString(obj); }
-function isBoolean$1(obj) { return toStr$1(obj) === '[object Boolean]' && canTrustToString(obj); }
+function isArray$6(obj) { return toStr(obj) === '[object Array]' && canTrustToString(obj); }
+function isDate$2(obj) { return toStr(obj) === '[object Date]' && canTrustToString(obj); }
+function isRegExp$2(obj) { return toStr(obj) === '[object RegExp]' && canTrustToString(obj); }
+function isError(obj) { return toStr(obj) === '[object Error]' && canTrustToString(obj); }
+function isString$3(obj) { return toStr(obj) === '[object String]' && canTrustToString(obj); }
+function isNumber$2(obj) { return toStr(obj) === '[object Number]' && canTrustToString(obj); }
+function isBoolean$1(obj) { return toStr(obj) === '[object Boolean]' && canTrustToString(obj); }
 
 // Symbol and BigInt do have Symbol.toStringTag by spec, so that can't be used to eliminate false positives
 function isSymbol(obj) {
@@ -34243,7 +34243,7 @@ function has$3(obj, key) {
     return hasOwn$2.call(obj, key);
 }
 
-function toStr$1(obj) {
+function toStr(obj) {
     return objectToString$1.call(obj);
 }
 
@@ -34594,7 +34594,7 @@ var abs$3 = Math.abs;
 var floor$1 = Math.floor;
 
 /** @type {import('./max')} */
-var max$3 = Math.max;
+var max$2 = Math.max;
 
 /** @type {import('./min')} */
 var min$2 = Math.min;
@@ -34751,95 +34751,122 @@ function requireObject_getPrototypeOf () {
 	return Object_getPrototypeOf;
 }
 
-/* eslint no-invalid-this: 1 */
+var implementation;
+var hasRequiredImplementation;
 
-var ERROR_MESSAGE = 'Function.prototype.bind called on incompatible ';
-var toStr = Object.prototype.toString;
-var max$2 = Math.max;
-var funcType = '[object Function]';
+function requireImplementation () {
+	if (hasRequiredImplementation) return implementation;
+	hasRequiredImplementation = 1;
 
-var concatty = function concatty(a, b) {
-    var arr = [];
+	/* eslint no-invalid-this: 1 */
 
-    for (var i = 0; i < a.length; i += 1) {
-        arr[i] = a[i];
-    }
-    for (var j = 0; j < b.length; j += 1) {
-        arr[j + a.length] = b[j];
-    }
+	var ERROR_MESSAGE = 'Function.prototype.bind called on incompatible ';
+	var toStr = Object.prototype.toString;
+	var max = Math.max;
+	var funcType = '[object Function]';
 
-    return arr;
-};
+	var concatty = function concatty(a, b) {
+	    var arr = [];
 
-var slicy = function slicy(arrLike, offset) {
-    var arr = [];
-    for (var i = offset || 0, j = 0; i < arrLike.length; i += 1, j += 1) {
-        arr[j] = arrLike[i];
-    }
-    return arr;
-};
+	    for (var i = 0; i < a.length; i += 1) {
+	        arr[i] = a[i];
+	    }
+	    for (var j = 0; j < b.length; j += 1) {
+	        arr[j + a.length] = b[j];
+	    }
 
-var joiny = function (arr, joiner) {
-    var str = '';
-    for (var i = 0; i < arr.length; i += 1) {
-        str += arr[i];
-        if (i + 1 < arr.length) {
-            str += joiner;
-        }
-    }
-    return str;
-};
+	    return arr;
+	};
 
-var implementation$1 = function bind(that) {
-    var target = this;
-    if (typeof target !== 'function' || toStr.apply(target) !== funcType) {
-        throw new TypeError(ERROR_MESSAGE + target);
-    }
-    var args = slicy(arguments, 1);
+	var slicy = function slicy(arrLike, offset) {
+	    var arr = [];
+	    for (var i = offset || 0, j = 0; i < arrLike.length; i += 1, j += 1) {
+	        arr[j] = arrLike[i];
+	    }
+	    return arr;
+	};
 
-    var bound;
-    var binder = function () {
-        if (this instanceof bound) {
-            var result = target.apply(
-                this,
-                concatty(args, arguments)
-            );
-            if (Object(result) === result) {
-                return result;
-            }
-            return this;
-        }
-        return target.apply(
-            that,
-            concatty(args, arguments)
-        );
+	var joiny = function (arr, joiner) {
+	    var str = '';
+	    for (var i = 0; i < arr.length; i += 1) {
+	        str += arr[i];
+	        if (i + 1 < arr.length) {
+	            str += joiner;
+	        }
+	    }
+	    return str;
+	};
 
-    };
+	implementation = function bind(that) {
+	    var target = this;
+	    if (typeof target !== 'function' || toStr.apply(target) !== funcType) {
+	        throw new TypeError(ERROR_MESSAGE + target);
+	    }
+	    var args = slicy(arguments, 1);
 
-    var boundLength = max$2(0, target.length - args.length);
-    var boundArgs = [];
-    for (var i = 0; i < boundLength; i++) {
-        boundArgs[i] = '$' + i;
-    }
+	    var bound;
+	    var binder = function () {
+	        if (this instanceof bound) {
+	            var result = target.apply(
+	                this,
+	                concatty(args, arguments)
+	            );
+	            if (Object(result) === result) {
+	                return result;
+	            }
+	            return this;
+	        }
+	        return target.apply(
+	            that,
+	            concatty(args, arguments)
+	        );
 
-    bound = Function('binder', 'return function (' + joiny(boundArgs, ',') + '){ return binder.apply(this,arguments); }')(binder);
+	    };
 
-    if (target.prototype) {
-        var Empty = function Empty() {};
-        Empty.prototype = target.prototype;
-        bound.prototype = new Empty();
-        Empty.prototype = null;
-    }
+	    var boundLength = max(0, target.length - args.length);
+	    var boundArgs = [];
+	    for (var i = 0; i < boundLength; i++) {
+	        boundArgs[i] = '$' + i;
+	    }
 
-    return bound;
-};
+	    bound = Function('binder', 'return function (' + joiny(boundArgs, ',') + '){ return binder.apply(this,arguments); }')(binder);
 
-var implementation = implementation$1;
+	    if (target.prototype) {
+	        var Empty = function Empty() {};
+	        Empty.prototype = target.prototype;
+	        bound.prototype = new Empty();
+	        Empty.prototype = null;
+	    }
 
-var functionBind = Function.prototype.bind || implementation;
+	    return bound;
+	};
+	return implementation;
+}
 
-/** @type {import('./functionCall')} */
-var functionCall = Function.prototype.call;
+var functionBind;
+var hasRequiredFunctionBind;
+
+function requireFunctionBind () {
+	if (hasRequiredFunctionBind) return functionBind;
+	hasRequiredFunctionBind = 1;
+
+	var implementation = requireImplementation();
+
+	functionBind = Function.prototype.bind || implementation;
+	return functionBind;
+}
+
+var functionCall;
+var hasRequiredFunctionCall;
+
+function requireFunctionCall () {
+	if (hasRequiredFunctionCall) return functionCall;
+	hasRequiredFunctionCall = 1;
+
+	/** @type {import('./functionCall')} */
+	functionCall = Function.prototype.call;
+	return functionCall;
+}
 
 var functionApply;
 var hasRequiredFunctionApply;
@@ -34856,19 +34883,19 @@ function requireFunctionApply () {
 /** @type {import('./reflectApply')} */
 var reflectApply = typeof Reflect !== 'undefined' && Reflect && Reflect.apply;
 
-var bind$2 = functionBind;
+var bind$2 = requireFunctionBind();
 
 var $apply$1 = requireFunctionApply();
-var $call$2 = functionCall;
+var $call$2 = requireFunctionCall();
 var $reflectApply = reflectApply;
 
 /** @type {import('./actualApply')} */
 var actualApply = $reflectApply || bind$2.call($call$2, $apply$1);
 
-var bind$1 = functionBind;
+var bind$1 = requireFunctionBind();
 var $TypeError$4 = type;
 
-var $call$1 = functionCall;
+var $call$1 = requireFunctionCall();
 var $actualApply = actualApply;
 
 /** @type {(args: [Function, thisArg?: unknown, ...args: unknown[]]) => Function} TODO FIXME, find a way to use import('.') */
@@ -34961,7 +34988,7 @@ function requireHasown () {
 
 	var call = Function.prototype.call;
 	var $hasOwn = Object.prototype.hasOwnProperty;
-	var bind = functionBind;
+	var bind = requireFunctionBind();
 
 	/** @type {import('.')} */
 	hasown = bind.call(call, $hasOwn);
@@ -34982,7 +35009,7 @@ var $URIError = uri;
 
 var abs$2 = abs$3;
 var floor = floor$1;
-var max$1 = max$3;
+var max$1 = max$2;
 var min$1 = min$2;
 var pow = pow$1;
 var round$2 = round$3;
@@ -35027,7 +35054,7 @@ var $ObjectGPO = requireObject_getPrototypeOf();
 var $ReflectGPO = requireReflect_getPrototypeOf();
 
 var $apply = requireFunctionApply();
-var $call = functionCall;
+var $call = requireFunctionCall();
 
 var needsEval = {};
 
@@ -35208,7 +35235,7 @@ var LEGACY_ALIASES = {
 	'%WeakSetPrototype%': ['WeakSet', 'prototype']
 };
 
-var bind = functionBind;
+var bind = requireFunctionBind();
 var hasOwn$1 = requireHasown();
 var $concat = bind.call($call, Array.prototype.concat);
 var $spliceApply = bind.call($apply, Array.prototype.splice);
@@ -46197,13 +46224,13 @@ const routes = [
     {
         path: '/',
         name: 'home',
-        component: () => __vitePreload(() => import('./Home.8453381d.js'),true?["assets/Home.8453381d.js","assets/Home.17abd204.css"]:void 0),
+        component: () => __vitePreload(() => import('./Home.e69ad7e0.js'),true?["assets/Home.e69ad7e0.js","assets/Home.17abd204.css"]:void 0),
         abort: []
     },
     {
         path: '/error',
         name: 'error',
-        component: () => __vitePreload(() => import('./Error.e898b1bd.js'),true?["assets/Error.e898b1bd.js","assets/Error.b7bdf131.css"]:void 0),
+        component: () => __vitePreload(() => import('./Error.e145869e.js'),true?["assets/Error.e145869e.js","assets/Error.b7bdf131.css"]:void 0),
         abort: []
     },
     {
@@ -53611,12 +53638,12 @@ const _sfc_main$g = {
   setup(__props) {
 
 const others = stores$1.others();
-storeToRefs(others);
+const { svgSpritePath } = storeToRefs(others);
 
 const props = __props;
 
-const url = computed(() => props.icon.includes('https://') ? props.icon : `${baseUrl}/img/svg-sprite.svg#${ props.icon }`);
-// const url = computed(() => props.icon.includes('https://') ? props.icon : `${ svgSpritePath.value }#${ props.icon }`);
+// const url = computed(() => props.icon.includes('https://') ? props.icon : `${baseUrl}/img/svg-sprite.svg#${ props.icon }`);
+const url = computed(() => props.icon.includes('https://') ? props.icon : `${ svgSpritePath.value }#${ props.icon }`);
 
 return (_ctx, _cache) => {
   return (openBlock(), createElementBlock("svg", {
@@ -53626,7 +53653,7 @@ return (_ctx, _cache) => {
     height: props.size ? props.size[1] : null,
     fill: props.color ? props.color : null
   }, [
-    (url.value.includes('/svg-sprite.svg'))
+    (url.value.includes('/svg-sprite'))
       ? (openBlock(), createElementBlock(Fragment, { key: 0 }, [
           (props.title)
             ? (openBlock(), createElementBlock("title", _hoisted_2$8, toDisplayString$1(props.title), 1 /* TEXT */))
@@ -55418,7 +55445,7 @@ const browserExt = {
   },
   test: () => true,
   load: async () => {
-    await __vitePreload(() => import('./browserAll.a5d2f2df.js'),true?["assets/browserAll.a5d2f2df.js","assets/init.349b8979.js","assets/colorToUniform.08ac551a.js"]:void 0);
+    await __vitePreload(() => import('./browserAll.cac37670.js'),true?["assets/browserAll.cac37670.js","assets/init.7f32795a.js","assets/colorToUniform.08ac551a.js"]:void 0);
   }
 };
 
@@ -55430,7 +55457,7 @@ const webworkerExt = {
   },
   test: () => typeof self !== "undefined" && self.WorkerGlobalScope !== void 0,
   load: async () => {
-    await __vitePreload(() => import('./webworkerAll.1bf9d293.js'),true?["assets/webworkerAll.1bf9d293.js","assets/init.349b8979.js","assets/colorToUniform.08ac551a.js"]:void 0);
+    await __vitePreload(() => import('./webworkerAll.4816b4eb.js'),true?["assets/webworkerAll.4816b4eb.js","assets/init.7f32795a.js","assets/colorToUniform.08ac551a.js"]:void 0);
   }
 };
 
@@ -65890,14 +65917,14 @@ async function autoDetectRenderer(options) {
   for (let i = 0; i < preferredOrder.length; i++) {
     const rendererType = preferredOrder[i];
     if (rendererType === "webgpu" && await isWebGPUSupported()) {
-      const { WebGPURenderer } = await __vitePreload(() => import('./WebGPURenderer.f2826a1b.js'),true?["assets/WebGPURenderer.f2826a1b.js","assets/colorToUniform.08ac551a.js","assets/SharedSystems.ee38c40a.js"]:void 0);
+      const { WebGPURenderer } = await __vitePreload(() => import('./WebGPURenderer.035561b2.js'),true?["assets/WebGPURenderer.035561b2.js","assets/colorToUniform.08ac551a.js","assets/SharedSystems.960507d4.js"]:void 0);
       RendererClass = WebGPURenderer;
       finalOptions = { ...options, ...options.webgpu };
       break;
     } else if (rendererType === "webgl" && isWebGLSupported(
       options.failIfMajorPerformanceCaveat ?? AbstractRenderer.defaultOptions.failIfMajorPerformanceCaveat
     )) {
-      const { WebGLRenderer } = await __vitePreload(() => import('./WebGLRenderer.9c7bba34.js'),true?["assets/WebGLRenderer.9c7bba34.js","assets/colorToUniform.08ac551a.js","assets/SharedSystems.ee38c40a.js"]:void 0);
+      const { WebGLRenderer } = await __vitePreload(() => import('./WebGLRenderer.e5b726c1.js'),true?["assets/WebGLRenderer.e5b726c1.js","assets/colorToUniform.08ac551a.js","assets/SharedSystems.960507d4.js"]:void 0);
       RendererClass = WebGLRenderer;
       finalOptions = { ...options, ...options.webgl };
       break;
@@ -76741,6 +76768,8 @@ var vueTheMask = {exports: {}};
 (function (module, exports) {
 	(function(e,t){module.exports=t();})(commonjsGlobal,function(){return function(e){function t(r){if(n[r])return n[r].exports;var a=n[r]={i:r,l:!1,exports:{}};return e[r].call(a.exports,a,a.exports,t),a.l=!0,a.exports}var n={};return t.m=e,t.c=n,t.i=function(e){return e},t.d=function(e,n,r){t.o(e,n)||Object.defineProperty(e,n,{configurable:!1,enumerable:!0,get:r});},t.n=function(e){var n=e&&e.__esModule?function(){return e.default}:function(){return e};return t.d(n,"a",n),n},t.o=function(e,t){return Object.prototype.hasOwnProperty.call(e,t)},t.p=".",t(t.s=10)}([function(e,t){e.exports={"#":{pattern:/\d/},X:{pattern:/[0-9a-zA-Z]/},S:{pattern:/[a-zA-Z]/},A:{pattern:/[a-zA-Z]/,transform:function(e){return e.toLocaleUpperCase()}},a:{pattern:/[a-zA-Z]/,transform:function(e){return e.toLocaleLowerCase()}},"!":{escape:!0}};},function(e,t,n){function r(e){var t=document.createEvent("Event");return t.initEvent(e,!0,!0),t}var a=n(2),o=n(0),i=n.n(o);t.a=function(e,t){var o=t.value;if((Array.isArray(o)||"string"==typeof o)&&(o={mask:o,tokens:i.a}),"INPUT"!==e.tagName.toLocaleUpperCase()){var u=e.getElementsByTagName("input");if(1!==u.length)throw new Error("v-mask directive requires 1 input, found "+u.length);e=u[0];}e.oninput=function(t){if(t.isTrusted){var i=e.selectionEnd,u=e.value[i-1];for(e.value=n.i(a.a)(e.value,o.mask,!0,o.tokens);i<e.value.length&&e.value.charAt(i-1)!==u;)i++;e===document.activeElement&&(e.setSelectionRange(i,i),setTimeout(function(){e.setSelectionRange(i,i);},0)),e.dispatchEvent(r("input"));}};var s=n.i(a.a)(e.value,o.mask,!0,o.tokens);s!==e.value&&(e.value=s,e.dispatchEvent(r("input")));};},function(e,t,n){var r=n(6),a=n(5);t.a=function(e,t){var o=!(arguments.length>2&&void 0!==arguments[2])||arguments[2],i=arguments[3];return Array.isArray(t)?n.i(a.a)(r.a,t,i)(e,t,o,i):n.i(r.a)(e,t,o,i)};},function(e,t,n){function r(e){e.component(s.a.name,s.a),e.directive("mask",i.a);}Object.defineProperty(t,"__esModule",{value:!0});var a=n(0),o=n.n(a),i=n(1),u=n(7),s=n.n(u);n.d(t,"TheMask",function(){return s.a}),n.d(t,"mask",function(){return i.a}),n.d(t,"tokens",function(){return o.a}),n.d(t,"version",function(){return c});var c="0.11.1";t.default=r,"undefined"!=typeof window&&window.Vue&&window.Vue.use(r);},function(e,t,n){Object.defineProperty(t,"__esModule",{value:!0});var r=n(1),a=n(0),o=n.n(a),i=n(2);t.default={name:"TheMask",props:{value:[String,Number],mask:{type:[String,Array],required:!0},masked:{type:Boolean,default:!1},tokens:{type:Object,default:function(){return o.a}}},directives:{mask:r.a},data:function(){return {lastValue:null,display:this.value}},watch:{value:function(e){e!==this.lastValue&&(this.display=e);},masked:function(){this.refresh(this.display);}},computed:{config:function(){return {mask:this.mask,tokens:this.tokens,masked:this.masked}}},methods:{onInput:function(e){e.isTrusted||this.refresh(e.target.value);},refresh:function(e){this.display=e;var e=n.i(i.a)(e,this.mask,this.masked,this.tokens);e!==this.lastValue&&(this.lastValue=e,this.$emit("input",e));}}};},function(e,t,n){function r(e,t,n){return t=t.sort(function(e,t){return e.length-t.length}),function(r,a){for(var o=!(arguments.length>2&&void 0!==arguments[2])||arguments[2],i=0;i<t.length;){var u=t[i];i++;var s=t[i];if(!(s&&e(r,s,!0,n).length>u.length))return e(r,u,o,n)}return ""}}t.a=r;},function(e,t,n){function r(e,t){var n=!(arguments.length>2&&void 0!==arguments[2])||arguments[2],r=arguments[3];e=e||"",t=t||"";for(var a=0,o=0,i="";a<t.length&&o<e.length;){var u=t[a],s=r[u],c=e[o];s&&!s.escape?(s.pattern.test(c)&&(i+=s.transform?s.transform(c):c,a++),o++):(s&&s.escape&&(a++,u=t[a]),n&&(i+=u),c===u&&o++,a++);}for(var f="";a<t.length&&n;){var u=t[a];if(r[u]){f="";break}f+=u,a++;}return i+f}t.a=r;},function(e,t,n){var r=n(8)(n(4),n(9),null,null);e.exports=r.exports;},function(e,t){e.exports=function(e,t,n,r){var a,o=e=e||{},i=typeof e.default;"object"!==i&&"function"!==i||(a=e,o=e.default);var u="function"==typeof o?o.options:o;if(t&&(u.render=t.render,u.staticRenderFns=t.staticRenderFns),n&&(u._scopeId=n),r){var s=u.computed||(u.computed={});Object.keys(r).forEach(function(e){var t=r[e];s[e]=function(){return t};});}return {esModule:a,exports:o,options:u}};},function(e,t){e.exports={render:function(){var e=this,t=e.$createElement;return (e._self._c||t)("input",{directives:[{name:"mask",rawName:"v-mask",value:e.config,expression:"config"}],attrs:{type:"text"},domProps:{value:e.display},on:{input:e.onInput}})},staticRenderFns:[]};},function(e,t,n){e.exports=n(3);}])});
 } (vueTheMask));
+
+const variables = '';
 
 const base = '';
 
